@@ -21,7 +21,7 @@ describe("Test mouse actions via WebdriverUni", () => {
         cy.get("#double-click").dblclick().should("have.class", "div-double-click double");
     });
 
-    it("Perform hold down the left mouse click button on an item", () => {
+    it("Perform hold down the left mouse click button on an item and then release", () => {
         cy.visit("http://www.webdriveruniversity.com/");
         cy.get("#actions").scrollIntoView().invoke("removeAttr", "target").click({ force: true });
         cy.get("#click-box").trigger("mousedown", { which: 1 }).then(($element) => {
