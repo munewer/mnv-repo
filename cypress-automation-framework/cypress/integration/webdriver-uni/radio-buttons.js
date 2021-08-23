@@ -12,6 +12,7 @@ describe("Test radio buttons via WebdriverUni", () => {
         cy.get("@buttons").first().check().should("be.checked");
         //check second radio button
         cy.get("@buttons").eq(1).check().should("be.checked");
+        cy.get("@buttons").eq(2).check().should("be.checked");
     });
 
 
