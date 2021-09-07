@@ -13,7 +13,6 @@ describe("Handling data via Webdriveruni", () => {
         }).then(() => {
             var i;
             for (i = 0; i < userDetails.length; i++) {
-                //To extract number value, use if statement
                 if (Number(userDetails[i])) {
                     numb += Number(userDetails[i]);
                 }
