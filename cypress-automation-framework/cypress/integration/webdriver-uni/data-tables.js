@@ -22,6 +22,17 @@ describe("Handling data via Webdriveruni", () => {
         })
     });
 
+    it("Calculate total age of all users by using nth-child css selector", () => {
+        let numb = 0;
+        cy.get("#thumbnail-1 td:nth-child(3)").each(($el, index, $list) => {
+            let userAge = $el.text();
+            numb += Number(userAge)
+        }).then(() => {
+            cy.log("Total age : " + numb);
+            expect(numb).eq(322);
+        })
+    });
+
     it("Calcaulate and assert age of a given user based on surname", () => {
 
         cy.get("#thumbnail-1 td:nth-child(2)").each(($el, index, $list) => {
