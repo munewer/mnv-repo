@@ -47,7 +47,7 @@ describe("Handling data via Webdriveruni", () => {
     })
 
 
-    it("Calcaulate and assert age of users who has same lastname", () => {
+    it("Calculate and assert age of users who has same lastname", () => {
         let numb = 0;
         cy.get("#thumbnail-1 td:nth-child(2)").each(($el, index, $list) => {
             const surname = $el.text();
