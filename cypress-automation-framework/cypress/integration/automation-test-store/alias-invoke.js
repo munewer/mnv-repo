@@ -2,8 +2,10 @@
 
 
 describe("Alias and invoke", () => {
-    it("Validate a specific haircare product", () => {
+    beforeEach(function () {
         cy.visit("https://automationteststore.com/");
+    })
+    it("Validate a specific haircare product", () => {
         cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
         cy.get(".fixed_wrapper .prdocutname").eq(0).invoke('text').as("productThumbnail");
         cy.get('@productThumbnail').its("length").should("be.gt", 5);
@@ -11,15 +13,13 @@ describe("Alias and invoke", () => {
     });
 
     it("Validate the number of products in the homepage", () => {
-        cy.visit("https://automationteststore.com/");
         cy.get(".thumbnail").as("thumbnail");
         cy.get("@thumbnail").should("have.length", 16);
         cy.get("@thumbnail").find(".productcart").invoke('attr', "title").should("contain", "Add to Cart");
         cy.get("@thumbnail").find(".productcart").should("have.length", 13);
     })
 
-    it.only("Calculate total of normal and sale products", () => {
-        cy.visit("https://automationteststore.com/");
+    it("Calculate total of normal and sale products", () => {
         cy.get(".thumbnail").find(".oneprice").invoke("text").as("itemPrice");
         cy.get(".thumbnail").find(".pricenew").invoke("text").as("salesItemPrice");
         var itemsTotal = 0;

@@ -3,11 +3,12 @@
 
 
 describe("Test radio buttons via WebdriverUni", () => {
-
-    it("Check and validate first radio buttons", () => {
+    beforeEach(function () {
         cy.visit("http://www.webdriveruniversity.com/");
         cy.get("#dropdown-checkboxes-radiobuttons").invoke("removeAttr", "target").click({ force: true });
+    })
 
+    it("Check and validate first radio buttons", () => {
         cy.get("#radio-buttons").find("[type='radio']").as("buttons");
         cy.get("@buttons").first().check().should("be.checked");
         //check second radio button
@@ -16,9 +17,6 @@ describe("Test radio buttons via WebdriverUni", () => {
 
 
     it("Validate the states of radio buttons", () => {
-        cy.visit("http://www.webdriveruniversity.com/");
-        cy.get("#dropdown-checkboxes-radiobuttons").invoke("removeAttr", "target").click({ force: true });
-
         cy.get("[value='lettuce']").should("be.enabled");
         cy.get("[value='lettuce']").should("not.be.checked");
 

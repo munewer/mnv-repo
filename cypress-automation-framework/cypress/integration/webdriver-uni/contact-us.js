@@ -3,12 +3,13 @@
 
 
 describe("Test Contact Us form via WebdriverUni", () => {
-
-    it("Should be able to submit a successful submission via contact us form", () => {
+    beforeEach(function () {
         cy.visit("http://www.webdriveruniversity.com/");
-        //cy.document().its('charset').should("eq", "UTF-8");
         cy.document().should("have.property", "charset").and("eq", "UTF-8");
         cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
+    })
+
+    it("Should be able to submit a successful submission via contact us form", () => {
         cy.title().should("eq", "WebDriver | Contact Us");
         cy.url().should("include", "/Contact-Us/contactus.html");
         cy.url().should("eq", "http://www.webdriveruniversity.com/Contact-Us/contactus.html");
@@ -22,8 +23,6 @@ describe("Test Contact Us form via WebdriverUni", () => {
     });
 
     it("Should not be able to submit successfull submission via contact us form as all fields are required", () => {
-        cy.visit("http://www.webdriveruniversity.com/");
-        cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
         cy.get('[name="first_name"]').type("jane");
         cy.get('[name="last_name"]').type("doe");
         cy.get('[name="message"]').type("comment2");
