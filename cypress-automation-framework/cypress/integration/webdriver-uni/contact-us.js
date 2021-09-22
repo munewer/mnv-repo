@@ -4,6 +4,9 @@
 
 describe("Test Contact Us form via WebdriverUni", () => {
     beforeEach(function () {
+        cy.fixture('example').then((data) => {
+            globalThis.data = data;
+        })
         cy.visit("http://www.webdriveruniversity.com/");
         cy.document().should("have.property", "charset").and("eq", "UTF-8");
         cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
@@ -13,18 +16,17 @@ describe("Test Contact Us form via WebdriverUni", () => {
         cy.title().should("eq", "WebDriver | Contact Us");
         cy.url().should("include", "/Contact-Us/contactus.html");
         cy.url().should("eq", "http://www.webdriveruniversity.com/Contact-Us/contactus.html");
-        cy.get('[name="first_name"]').type("jane");
-        cy.get('[name="last_name"]').type("doe");
-        cy.get('[name="email"]').type("test@test.com");
+        cy.get('[name="first_name"]').type(data.first_name);
+        cy.get('[name="last_name"]').type(data.last_name);
+        cy.get('[name="email"]').type(data.email);
         cy.get('[name="message"]').type("comment");
         cy.get('[type="submit"]').click();
-        //cy.get('#contact_reply').should("contain", "Thank You for your Message!");
         cy.get('h1').should("have.text", "Thank You for your Message!");
     });
 
     it("Should not be able to submit successfull submission via contact us form as all fields are required", () => {
-        cy.get('[name="first_name"]').type("jane");
-        cy.get('[name="last_name"]').type("doe");
+        cy.get('[name="first_name"]').type(data.first_name);
+        cy.get('[name="last_name"]').type(data.last_name);
         cy.get('[name="message"]').type("comment2");
         cy.get('[type="submit"]').click();
         //cy.get('body').should("contain", "Error: all fields are required")

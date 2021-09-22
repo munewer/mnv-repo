@@ -1,7 +1,9 @@
 /// <reference types="Cypress"/>
 
 describe("Test contact us form via Automation Test Store", () => {
-
+    before(function () {
+        cy.fixture("userDetails").as("user");
+    })
 
     it("Should be able to submit a successful submission via contact us form", () => {
         cy.visit("https://www.automationteststore.com/");
@@ -10,8 +12,11 @@ describe("Test contact us form via Automation Test Store", () => {
         cy.get("a[href$='contact']").click().then(function (linkText) {
             cy.log("the link has text as : " + linkText.text());
         });
-        cy.get("#ContactUsFrm_first_name").type("Jane");
-        cy.get("#ContactUsFrm_email").type("test@test.com");
+        cy.get("@user").then((user) => {
+            cy.get("#ContactUsFrm_first_name").type(user.first_name);
+            cy.get("#ContactUsFrm_email").type(user.email);
+        })
+
         cy.get("#ContactUsFrm_email").should("have.attr", "name", "email");
         cy.get("#ContactUsFrm_enquiry").type("comment22222");
         cy.xpath("//*[@title='Submit']").click();
