@@ -2,7 +2,7 @@
 
 describe("Verifying variables, cypress commands and jquery commands", () => {
     beforeEach(function () {
-        cy.visit("https://automationteststore.com/");
+        cy.visit(Cypress.env("automationTestStore_homepage"));
     })
     it("Navigating to specific product pages", () => {
         //This will be fail because of the order of execution
@@ -37,7 +37,7 @@ describe("Verifying variables, cypress commands and jquery commands", () => {
     });
 
     it("Validate properties of Contact Us page", () => {
-        cy.visit("https://automationteststore.com/index.php?rt=content/contact");
+        cy.visit(Cypress.env("automationTestStore_homepage") + "/index.php?rt=content/contact");
 
         //Uses cypress commands and chaining
         cy.contains('#ContactUsFrm', 'Contact Us Form').find('#field_11').should("contain", 'First name:');

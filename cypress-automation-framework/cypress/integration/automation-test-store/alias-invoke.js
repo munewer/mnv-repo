@@ -3,7 +3,7 @@
 
 describe("Alias and invoke", () => {
     beforeEach(function () {
-        cy.visit("https://automationteststore.com/");
+        cy.visit(Cypress.env("automationTestStore_homepage"));
     })
     it("Validate a specific haircare product", () => {
         cy.get("a[href*='product/category&path=']").contains("Hair Care").click();

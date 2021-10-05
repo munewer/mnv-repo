@@ -1,3 +1,9 @@
 {
-    "chromeWebSecurity": false
+    "baseUrl": "http://www.webdriveruniversity.com",
+    "chromeWebSecurity": false,
+    "env": {
+        "first_name": "Sarah",
+        "automationTestStore_homepage": "https://www.automationteststore.com",
+        "webdriveruni_homepage": "http://www.webdriveruniversity.com"
+    }
 }

@@ -2,7 +2,7 @@
 
 describe("Test file upload via webdriveruni", () => {
     beforeEach(function () {
-        cy.visit("http://www.webdriveruniversity.com/");
+        cy.visit("/");
         cy.get("#file-upload").invoke("removeAttr", "target").click({ force: true });
     })
 

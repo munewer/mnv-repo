@@ -3,7 +3,7 @@
 describe("Test dropdown list via WebdriverUni", () => {
 
     it("Check and validate first radio buttons", () => {
-        cy.visit("http://www.webdriveruniversity.com/");
+        cy.visit("/");
         cy.get("#dropdown-checkboxes-radiobuttons").invoke("removeAttr", "target").click({ force: true });
 
         //Select by value,asser value from first dropdown menu

@@ -10,7 +10,7 @@ describe("Add multiple products to the basket", () => {
 
 
     beforeEach(function () {
-        cy.visit("https://automationteststore.com/");
+        cy.visit(Cypress.env("automationTestStore_homepage"));
         cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
     })
 

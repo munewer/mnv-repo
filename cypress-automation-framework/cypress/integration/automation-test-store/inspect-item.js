@@ -2,7 +2,7 @@
 
 describe("Inspect Automation Test Store items using change of commands", () => {
     beforeEach(function () {
-        cy.visit("https://automationteststore.com/");
+        cy.visit(Cypress.env("automationTestStore_homepage"));
     })
     it("Click on the first item using item header", () => {
         cy.get('#block_frame_featured_1769 > .thumbnails > :nth-child(1) > .fixed_wrapper > .fixed > .prdocutname').click();

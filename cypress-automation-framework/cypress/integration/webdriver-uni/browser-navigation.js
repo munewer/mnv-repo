@@ -2,7 +2,7 @@
 
 describe("Validating webdriveruni homepage links", () => {
     it("Confirm links redirect to the correct pages", () => {
-        cy.visit("http://www.webdriveruniversity.com/");
+        cy.visit("/");
         cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
         cy.url().should("include", "contactus");
 

@@ -4,7 +4,7 @@
 describe("Test handling js alerts", () => {
 
     beforeEach(function () {
-        cy.visit("http://www.webdriveruniversity.com/");
+        cy.visit("/");
         cy.get("#popup-alerts").invoke("removeAttr", "target").click({ force: true });
     })
     it("Confirm js alert contains correct text", () => {

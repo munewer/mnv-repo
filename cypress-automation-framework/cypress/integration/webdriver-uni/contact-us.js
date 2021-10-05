@@ -3,13 +3,20 @@
 
 
 describe("Test Contact Us form via WebdriverUni", () => {
-    beforeEach(function () {
+
+    before(function () {
         cy.fixture('example').then((data) => {
             globalThis.data = data;
         })
-        cy.visit("http://www.webdriveruniversity.com/");
-        cy.document().should("have.property", "charset").and("eq", "UTF-8");
-        cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
+
+    })
+
+
+
+    beforeEach(function () {
+
+        cy.visit(Cypress.env("webdriveruni_homepage") + "/Contact-Us/contactus.html");
+
     })
 
     it("Should be able to submit a successful submission via contact us form", () => {
@@ -25,7 +32,13 @@ describe("Test Contact Us form via WebdriverUni", () => {
     });
 
     it("Should be able to submit a successful submission via contact us form by using Custom command", () => {
-        cy.webdriveruni_Contactus_Submission(data.first_name, data.last_name, data.email, "custom command was used", 'h1', "Thank You for your Message!")
+        cy.webdriveruni_Contactus_Submission(
+            Cypress.env("first_name"),
+            data.last_name,
+            data.email,
+            "custom command was used",
+            'h1',
+            "Thank You for your Message!")
     });
 
     it("Should not be able to submit successfull submission via contact us form as all fields are required", () => {
@@ -39,8 +52,14 @@ describe("Test Contact Us form via WebdriverUni", () => {
 
     });
 
-    it.only("Should not be able to submit successfull submission via contact us form as all fields are required by using Custom command", () => {
-        cy.webdriveruni_Contactus_Submission(data.first_name, data.last_name, " ", "custom comment2", 'body', "Error: Invalid email address")
+    it("Should not be able to submit successfull submission via contact us form as all fields are required by using Custom command", () => {
+        cy.webdriveruni_Contactus_Submission(
+            data.first_name,
+            data.last_name,
+            " ",
+            "custom comment2",
+            'body',
+            "Error: Invalid email address")
     });
 
 })
