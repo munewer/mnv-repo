@@ -28,5 +28,27 @@ describe("Iterate over elements", () => {
         })
     });
 
+    it("Add specific product to basket by using custom command", () => {
+        cy.selectProductbyName("Curls to straight Shampoo").then(() => {
+            cy.get(".productname .bgnone").contains("Curls to straight Shampoo");
+            cy.clearTextbox("#product_quantity");
+            cy.enterValue("#product_quantity", 2)
+            cy.get('.total-price').should("contain", "$8.00");
+            cy.clickbySelector(".cart")
+            cy.get("[class='bold totalamout']").should("contain", "$10.00");
+            cy.clickbySelector("#cart_checkout2");
+            cy.get("#accountFrm_accountguest").check();
+            cy.clickbySelector("[title='Continue']");
 
-})
+        });
+    })
+
+    it("Click on specific product by using custom command", () => {
+        cy.selectProductbyName("Eau Parfumee au The Vert Shampoo").then(() => {
+            cy.get(".productname .bgnone").contains("Eau Parfumee au The Vert Shampoo");
+            cy.clearTextbox("#product_quantity");
+            cy.enterValue("#product_quantity", 2)
+            cy.get('.total-price').should("contain", "$62.00");
+        });
+    })
+});

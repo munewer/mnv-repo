@@ -24,6 +24,10 @@ describe("Test Contact Us form via WebdriverUni", () => {
         cy.get('h1').should("have.text", "Thank You for your Message!");
     });
 
+    it("Should be able to submit a successful submission via contact us form by using Custom command", () => {
+        cy.webdriveruni_Contactus_Submission(data.first_name, data.last_name, data.email, "custom command was used", 'h1', "Thank You for your Message!")
+    });
+
     it("Should not be able to submit successfull submission via contact us form as all fields are required", () => {
         cy.get('[name="first_name"]').type(data.first_name);
         cy.get('[name="last_name"]').type(data.last_name);
@@ -33,6 +37,10 @@ describe("Test Contact Us form via WebdriverUni", () => {
         //cy.get('body').should("contains", "Error: all fields are required\n Error: Invalid email address")
         cy.get('body').contains("Error: all fields are required")
 
+    });
+
+    it.only("Should not be able to submit successfull submission via contact us form as all fields are required by using Custom command", () => {
+        cy.webdriveruni_Contactus_Submission(data.first_name, data.last_name, " ", "custom comment2", 'body', "Error: Invalid email address")
     });
 
 })

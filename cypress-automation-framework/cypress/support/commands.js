@@ -19,8 +19,46 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
+Cypress.Commands.add("selectProductbyName", (productName) => {
+    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+        if ($el.text() === productName) {
+            cy.wrap($el).click();
+        }
+    })
+})
+
+Cypress.Commands.add("addProductToBasket", (productName) => {
+    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+        if ($el.text() === productName) {
+            cy.log($el.text);
+            cy.get(".productcart").eq(index).click();
+        }
+    })
+})
+//Clear default value of text box by entering any selector
+Cypress.Commands.add("clearTextbox", ($selector) => {
+    cy.get($selector).clear();
+})
+//Enter any value to textbox by entering any selector and value
+Cypress.Commands.add("enterValue", ($selector, value) => {
+    cy.get($selector).type(value);
+})
+//Click by entering selector
+Cypress.Commands.add("clickbySelector", ($selector) => {
+    cy.get($selector).click();
+})
+
+//Custom commands for webdriveruni contactus page submission
+Cypress.Commands.add("webdriveruni_Contactus_Submission", (firstname, lastname, email, comment, $selector, textToLocate) => {
+    cy.get('[name="first_name"]').type(firstname);
+    cy.get('[name="last_name"]').type(lastname);
+    cy.get('[name="email"]').type(email);
+    cy.get('[name="message"]').type(comment);
+    cy.get('[type="submit"]').click();
+    cy.get($selector).contains(textToLocate);
+
+})
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
