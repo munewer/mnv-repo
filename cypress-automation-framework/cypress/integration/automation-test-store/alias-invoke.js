@@ -35,7 +35,7 @@ describe("Alias and invoke", () => {
             }
             itemsTotal += itemPriceTotal;
             cy.log("Non-sales price items total :" + itemPriceTotal);
-            expect(itemPriceTotal).to.eq(213.7)
+            expect(itemPriceTotal).to.eq(251.1)
         })
 
         //Calculate Sales items total price and update itemsTotal
@@ -53,7 +53,7 @@ describe("Alias and invoke", () => {
             expect(salesItemPriceTotal).to.eq(403);
         }).then(() => {
             cy.log("Total price of all products: " + itemsTotal)
-            expect(itemsTotal).to.eq(616.7);
+            expect(itemsTotal).to.eq(654.1);
         })
 
     });
