@@ -59,6 +59,12 @@ Cypress.Commands.add("webdriveruni_Contactus_Submission", (firstname, lastname, 
 
 })
 
+//Navigate to webdriveruni homepage via custom command
+Cypress.Commands.add("navigate_To_Webdriveruni_Homepage", () => {
+    cy.visit("/");
+
+})
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-file-upload';

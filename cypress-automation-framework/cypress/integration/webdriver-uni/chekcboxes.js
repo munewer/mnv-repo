@@ -2,7 +2,7 @@
 
 describe("Test Checkboxes via WebdriverUni", () => {
     beforeEach(function () {
-        cy.visit("/");
+        cy.navigate_To_Webdriveruni_Homepage();
         cy.get("#dropdown-checkboxes-radiobuttons").invoke("removeAttr", "target").click({ force: true });
     })
 
