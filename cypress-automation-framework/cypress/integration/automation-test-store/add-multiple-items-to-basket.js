@@ -7,7 +7,7 @@ describe("Add multiple products to the basket", () => {
     //Configure the defaultCommand timeout for specific test suite
     //Cypress.config("defaultCommandTimeout", 20000)
     const AutoStore_Homepage = new AutoStore_Homepage_PO();
-    const haircare_PO = new Autostore_Haircare_PO;
+    const haircare_PO = new Autostore_Haircare_PO();
     before(function () {
         cy.fixture("products").then((data) => {
             globalThis.data = data
