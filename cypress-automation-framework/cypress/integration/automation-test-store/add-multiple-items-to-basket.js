@@ -1,7 +1,9 @@
+///<reference types = "Cypress" />
+
 import AutoStore_Homepage_PO from "../../support/pageObjects/automation-test-store/Autostore_Homepage_PO";
 import Autostore_Haircare_PO from "../../support/pageObjects/automation-test-store/Autostore_Haircare_PO";
 
-///<reference types = "Cypress" />
+
 
 describe("Add multiple products to the basket", () => {
     //Configure the defaultCommand timeout for specific test suite
@@ -16,8 +18,8 @@ describe("Add multiple products to the basket", () => {
 
 
     beforeEach(function () {
-        /*  cy.visit(Cypress.env("automationTestStore_homepage"));
-         cy.get("a[href*='product/category&path=']").contains("Hair Care").click(); */
+        cy.clearLocalStorage();
+        cy.clearCookies();
         AutoStore_Homepage.accessHomepage();
         AutoStore_Homepage.visitHaircarePage();
     })
