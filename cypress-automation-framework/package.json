@@ -4,13 +4,23 @@
   "description": "Cypress Automation Framework",
   "main": "index.js",
   "scripts": {
-    "test": " "
+    "triggerAllTests-headless": "npx cypress run",
+    "triggerAllTests-headed": "npx cypress run --headed",
+    "triggerAllTests-chrome": "npx cypress run --browser chrome",
+    "triggerAllTests-dashboard": "npx cypress run --record --key d0f0a1ee-d389-4504-b6ef-85f4efbae23c",
+    "triggerAllTests-webdriveruni": "npx cypress run --spec cypress/integration/webdriver-uni/*",
+    "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
+    "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
+    "delete-results": "rm -rf cypress/results/* || true"
   },
   "author": "Munevver Ak",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^4.12.1",
     "cypress-file-upload": "^5.0.8",
-    "cypress-xpath": "^1.6.2"
+    "cypress-multi-reporters": "^1.5.0",
+    "cypress-xpath": "^1.6.2",
+    "mocha": "^9.1.2",
+    "mocha-junit-reporter": "^2.0.2"
   }
 }
