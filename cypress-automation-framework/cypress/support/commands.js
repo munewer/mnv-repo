@@ -65,6 +65,11 @@ Cypress.Commands.add("navigate_To_Webdriveruni_Homepage", () => {
 
 })
 
+//Navigate to webdriveruni Checkbox page
+Cypress.Commands.add("navigateTo_WebdriverUni_Checkbox_Page", () => {
+    cy.visit("/" + "/Dropdown-Checkboxes-RadioButtons/index.html")
+})
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import 'cypress-file-upload';
