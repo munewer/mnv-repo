@@ -6,6 +6,10 @@
   "videosFolder": "cypress/videos/testExecutionVideos",
   "viewportHeight": 1080,
   "viewportWidth": 1920,
+  "retries": {
+    "runMode": 0,
+    "openMode": 0
+  },
   "env": {
     "first_name": "Sarah",
     "automationTestStore_homepage": "https://www.automationteststore.com",
