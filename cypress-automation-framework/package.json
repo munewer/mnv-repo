@@ -10,6 +10,7 @@
     "triggerAllTests-dashboard": "npx cypress run --record --key d0f0a1ee-d389-4504-b6ef-85f4efbae23c",
     "triggerAllTests-webdriveruni": "npx cypress run --spec cypress/integration/webdriver-uni/*",
     "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/integration/automation-test-store/*",
+    "triggerAllTests-autoTestStore-dashboard": "npx cypress run --spec cypress/integration/automation-test-store/* --record --key d0f0a1ee-d389-4504-b6ef-85f4efbae23c",
     "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
     "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
     "delete-results": "rm -rf cypress/results/* || true",
@@ -17,7 +18,8 @@
     "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
     "cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-headless && npm run mochawesome-merge",
     "delete-execution-videos": "rm -rf cypress/videos/testExecutionVideos/* || true",
-    "triggerAllTests-staging": "npx cypress run --config-file cypress/config/staging.json"
+    "triggerAllTests-staging": "npx cypress run --config-file cypress/config/staging.json",
+    "cypress-multi-browser": "npm run triggerAllTests-autoTestStore -- --browser firefox --headed & npm run triggerAllTests-autoTestStore -- --browser chrome --headed"
   },
   "author": "Munevver Ak",
   "license": "ISC",
